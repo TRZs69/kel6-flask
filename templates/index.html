@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediksi Harga Rumah Bandung</title>
+</head>
+<body>
+  <h1>Prediksi Harga Rumah di Kota Bandung</h1>
+
+  <h2>Performansi Model (test set)</h2>
+  <ul>
+    <li>Linear Regression → MSE = {{ metrics.mse }}, R² = {{ metrics.r2 }}</li>
+    <li>Decision Tree Classifier → Accuracy = {{ metrics.acc }}</li>
+  </ul>
+
+  <form method="post">
+    <label>Kamar Tidur: <input name="bedroom_count" type="number" step="any" required></label><br>
+    <label>Kamar Mandi: <input name="bathroom_count" type="number" step="any" required></label><br>
+    <label>Carport: <input name="carport_count" type="number" step="any" required></label><br>
+    <label>Luas Tanah (m²): <input name="land_area" type="number" step="any" required></label><br>
+    <label>Luas Bangunan (m²): <input name="building_area" type="number" step="any" required></label><br>
+
+    <label>Lokasi:
+      <select name="location">
+        {% for loc in locations %}
+          <option value="{{ loc }}">{{ loc }}</option>
+        {% endfor %}
+      </select>
+    </label><br>
+
+    <label><input type="radio" name="model_choice" value="Regression" checked> Regression</label>
+    <label><input type="radio" name="model_choice" value="Classification"> Classification</label><br>
+
+    <button type="submit">Prediksi</button>
+  </form>
+</body>
+</html>

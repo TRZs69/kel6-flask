@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hasil Prediksi</title>
+</head>
+<body>
+  <h1>Hasil</h1>
+  <p>{{ result|safe }}</p>
+  {% if extra %}
+    <p>{{ extra|safe }}</p>
+  {% endif %}
+  <a href="{{ url_for('index') }}">⬅️ Kembali</a>
+</body>
+</html>
