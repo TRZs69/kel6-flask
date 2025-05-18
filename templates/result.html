@@ -11,11 +11,17 @@
       <h1 class="text-2xl font-semibold">Prediction Result</h1>
     </header>
     <div class="p-6 space-y-4">
-      <p class="text-gray-800 text-lg">{{ price_text|safe }}</p>
-      <p class="text-gray-800 text-lg">{{ cls_text|safe }}</p>
-      <div class="text-gray-700 text-sm leading-relaxed">
-        {{ cls_extra|safe }}
-      </div>
+      {% if choice == 'Regression' %}
+        <!-- Only show the regression prediction -->
+        <p class="text-gray-800 text-lg">{{ price_text|safe }}</p>
+      {% else %}
+        <!-- Only show the classification prediction -->
+        <p class="text-gray-800 text-lg">{{ cls_text|safe }}</p>
+        <div class="text-gray-700 text-sm leading-relaxed">
+          {{ cls_extra|safe }}
+        </div>
+      {% endif %}
+
       <a href="{{ url_for('index') }}"
          class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
         ← Back

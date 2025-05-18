@@ -86,6 +86,8 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
+         # 1. Read which model the user chose
+        model_choice = request.form['model_choice']
         # Gather inputs
         feat = {
             'bedroom_count': float(request.form['bedroom_count']),
@@ -110,6 +112,7 @@ def index():
         cls_extra = price_range_text + f"<br>Accuracy: {acc:.3f}"
 
         return render_template("result.html",
+                                choice=model_choice,   # add this
                                price_text=price_text,
                                cls_text=cls_text,
                                cls_extra=cls_extra)
