@@ -51,7 +51,7 @@ mse       = mean_squared_error(y_price_test, y_pred_lr)
 r2        = r2_score(y_price_test, y_pred_lr)
 
 # Classification
-dt = DecisionTreeClassifier(max_depth=5, min_samples_split=10, random_state=42)
+dt = DecisionTreeClassifier(max_depth=5,x min_samples_split=10, random_state=42)
 dt.fit(X_train, y_cat_train)
 y_pred_dt = dt.predict(X_test)
 acc       = accuracy_score(y_cat_test, y_pred_dt)
