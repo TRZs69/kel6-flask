@@ -3,35 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <title>Prediksi Harga Rumah Bandung</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Prediksi Harga Rumah di Kota Bandung</h1>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-lg">
+    <header class="bg-blue-600 text-white py-4 rounded-t-lg text-center">
+      <h1 class="text-2xl font-semibold">Prediksi Harga Rumah di Kota Bandung</h1>
+    </header>
 
-  <h2>Performansi Model (test set)</h2>
-  <ul>
-    <li>Linear Regression → MSE = {{ metrics.mse }}, R² = {{ metrics.r2 }}</li>
-    <li>Decision Tree Classifier → Accuracy = {{ metrics.acc }}</li>
-  </ul>
+    <div class="p-6">
+      <h2 class="text-lg font-medium mb-4">Performansi Model (test set)</h2>
+      <ul class="list-disc list-inside text-gray-700 mb-6">
+        <li>Linear Regression → MSE = {{ metrics.mse }}, R² = {{ metrics.r2 }}</li>
+        <li>Decision Tree Classifier → Accuracy = {{ metrics.acc }}</li>
+      </ul>
 
-  <form method="post">
-    <label>Kamar Tidur: <input name="bedroom_count" type="number" step="any" required></label><br>
-    <label>Kamar Mandi: <input name="bathroom_count" type="number" step="any" required></label><br>
-    <label>Carport: <input name="carport_count" type="number" step="any" required></label><br>
-    <label>Luas Tanah (m²): <input name="land_area" type="number" step="any" required></label><br>
-    <label>Luas Bangunan (m²): <input name="building_area" type="number" step="any" required></label><br>
+      <form method="post" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 mb-1">Kamar Tidur</label>
+          <input name="bedroom_count" type="number" step="any" required
+                 class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Kamar Mandi</label>
+          <input name="bathroom_count" type="number" step="any" required
+                 class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Carport</label>
+          <input name="carport_count" type="number" step="any" required
+                 class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Luas Tanah (m²)</label>
+          <input name="land_area" type="number" step="any" required
+                 class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-1">Luas Bangunan (m²)</label>
+          <input name="building_area" type="number" step="any" required
+                 class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"/>
+        </div>
 
-    <label>Lokasi:
-      <select name="location">
-        {% for loc in locations %}
-          <option value="{{ loc }}">{{ loc }}</option>
-        {% endfor %}
-      </select>
-    </label><br>
+        <div>
+          <label class="block text-gray-700 mb-1">Lokasi</label>
+          <select name="location" required
+                  class="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+            {% for loc in locations %}
+              <option value="{{ loc }}">{{ loc }}</option>
+            {% endfor %}
+          </select>
+        </div>
 
-    <label><input type="radio" name="model_choice" value="Regression" checked> Regression</label>
-    <label><input type="radio" name="model_choice" value="Classification"> Classification</label><br>
+        <div class="flex items-center space-x-4">
+          <label class="inline-flex items-center">
+            <input type="radio" name="model_choice" value="Regression" checked
+                   class="form-radio text-blue-600"/>
+            <span class="ml-2 text-gray-700">Regression</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="radio" name="model_choice" value="Classification"
+                   class="form-radio text-blue-600"/>
+            <span class="ml-2 text-gray-700">Classification</span>
+          </label>
+        </div>
 
-    <button type="submit">Prediksi</button>
-  </form>
+        <button type="submit"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition">
+          Prediksi
+        </button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

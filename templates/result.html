@@ -3,13 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>Hasil Prediksi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <h1>Hasil</h1>
-  <p>{{ result|safe }}</p>
-  {% if extra %}
-    <p>{{ extra|safe }}</p>
-  {% endif %}
-  <a href="{{ url_for('index') }}">⬅️ Kembali</a>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md">
+    <header class="bg-green-600 text-white py-4 rounded-t-lg text-center">
+      <h1 class="text-2xl font-semibold">Hasil Prediksi</h1>
+    </header>
+
+    <div class="p-6 space-y-4">
+      <p class="text-gray-800 text-lg">{{ result|safe }}</p>
+      {% if extra %}
+        <div class="text-gray-700 text-sm leading-relaxed">
+          {{ extra|safe }}
+        </div>
+      {% endif %}
+      <a href="{{ url_for('index') }}"
+         class="inline-block mt-4 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">
+        ← Kembali
+      </a>
+    </div>
+  </div>
 </body>
 </html>
